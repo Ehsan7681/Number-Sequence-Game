@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بازی دنباله اعداد</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- منوی اصلی - انتخاب جهت -->
+        <div id="mainMenu" class="menu-card glass-card">
+            <h1>بازی دنباله اعداد</h1>
+            <div class="menu-description">
+                <p>در این بازی باید دنباله اعداد را حدس بزنید.</p>
+                <div class="mode-selection">
+                    <h2>انتخاب جهت بازی:</h2>
+                    <div class="mode-buttons">
+                        <button onclick="showDifficultyMenu('forward')" class="glass-button">
+                            <span>🔼 رو به جلو</span>
+                            <small>پیدا کردن اعداد بعدی</small>
+                        </button>
+                        <button onclick="showDifficultyMenu('backward')" class="glass-button">
+                            <span>🔽 رو به عقب</span>
+                            <small>پیدا کردن اعداد قبلی</small>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- منوی انتخاب سختی -->
+        <div id="difficultyMenu" class="menu-card glass-card" style="display: none;">
+            <div class="menu-header">
+                <button onclick="showMainMenu()" class="back-button glass-button">
+                    <span>↩️</span>
+                    <span>بازگشت</span>
+                </button>
+                <h2 id="difficultyTitle">انتخاب سطح سختی</h2>
+            </div>
+            <div class="menu-description">
+                <div class="difficulty-selection">
+                    <div class="difficulty-buttons">
+                        <button onclick="startGame('easy')" class="glass-button">
+                            <span>آسان 😊</span>
+                            <small>3 راهنمایی | اعداد 1 تا 15</small>
+                        </button>
+                        <button onclick="startGame('medium')" class="glass-button">
+                            <span>متوسط 🤔</span>
+                            <small>2 راهنمایی | اعداد 1 تا 25</small>
+                        </button>
+                        <button onclick="startGame('hard')" class="glass-button">
+                            <span>سخت 😰</span>
+                            <small>1 راهنمایی | اعداد 1 تا 50</small>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحه بازی -->
+        <div id="gameScreen" class="glass-card" style="display: none;">
+            <div class="game-header">
+                <button onclick="showMainMenu()" class="back-button glass-button">
+                    <span>🏠</span>
+                    <span>منو</span>
+                </button>
+                <div class="game-info">
+                    <div class="info-item">
+                        <span id="gameModeIcon"></span>
+                        <span id="gameModeText"></span>
+                    </div>
+                    <div class="info-item">
+                        <span id="difficultyIcon"></span>
+                        <span>سطح</span>
+                    </div>
+                    <div class="info-item">
+                        <span>🎯</span>
+                        <span>امتیاز: <span id="score">0</span></span>
+                    </div>
+                    <div class="info-item">
+                        <span>💡</span>
+                        <span>راهنمایی: <span id="hints">3</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pattern-container">
+                <div id="pattern-numbers" class="numbers-container"></div>
+            </div>
+
+            <div class="answer-container">
+                <div id="answer-numbers" class="numbers-container"></div>
+                <p class="hint">برای پاک کردن هر عدد، روی آن کلیک کنید</p>
+            </div>
+
+            <div class="controls">
+                <select id="pattern-type" onchange="changePattern()">
+                    <option value="2">گام: 2</option>
+                    <option value="3">گام: 3</option>
+                    <option value="4">گام: 4</option>
+                    <option value="5">گام: 5</option>
+                </select>
+                <button onclick="useHint()" class="glass-button hint-button">
+                    <span>💡</span>
+                    <span>راهنمایی</span>
+                </button>
+                <button onclick="checkAnswer()" class="glass-button check-button">
+                    <span>✓</span>
+                    <span>بررسی</span>
+                </button>
+            </div>
+
+            <div id="number-pad" class="numbers-container"></div>
+        </div>
+    </div>
+
+    <!-- پاپ‌آپ نتیجه -->
+    <div id="resultPopup" class="popup-overlay">
+        <div class="popup">
+            <div id="popupIcon" class="popup-icon"></div>
+            <h2 id="popupTitle"></h2>
+            <p id="popupMessage"></p>
+            <button onclick="closePopup()" class="glass-button">ادامه</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

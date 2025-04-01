@@ -1,0 +1,555 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FF9A9E, #FAD0C4, #FFF1F1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    direction: rtl;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* استایل‌های منو */
+.menu-card {
+    text-align: center;
+    position: relative;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+    min-height: 50px;
+    padding: 0 45px;
+}
+
+.menu-header .back-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.menu-header h2 {
+    color: #444;
+    text-align: center;
+    font-size: 1.8em;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    margin: 0;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.menu-description {
+    color: #444;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    font-size: 1.1em;
+}
+
+.menu-description p {
+    margin-bottom: 15px;
+}
+
+.menu-description ul {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.menu-description li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.menu-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* استایل‌های دکمه */
+.glass-button {
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 12px 24px;
+    border-radius: 20px;
+    color: #444;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.glass-button:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.glass-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* استایل‌های صفحه بازی */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    gap: 20px;
+}
+
+.game-header .back-button {
+    flex-shrink: 0;
+}
+
+.game-info {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 auto;
+}
+
+.info-item {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 8px 15px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: #444;
+    font-weight: bold;
+}
+
+.back-button {
+    font-size: 0.85em;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: auto;
+    flex-shrink: 0;
+}
+
+.back-button span:first-child {
+    font-size: 1em;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* استایل‌های اعداد */
+.numbers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.number {
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-size: 1.6em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+}
+
+.number:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-5px) rotate(3deg);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.number:active {
+    transform: translateY(2px) rotate(-2deg);
+}
+
+.answer-slot {
+    border: 3px dashed rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.answer-slot.selected {
+    border-style: solid;
+}
+
+.answer-slot.correct {
+    background: rgba(132, 255, 132, 0.4);
+    border-color: #4CAF50;
+    animation: celebrate 0.5s ease-in-out;
+}
+
+@keyframes celebrate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2) rotate(10deg); }
+    100% { transform: scale(1); }
+}
+
+.answer-slot.incorrect {
+    background: rgba(255, 132, 132, 0.4);
+    border-color: #ff4444;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* استایل‌های کنترل‌ها */
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+select {
+    padding: 10px 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: #444;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+select option {
+    background: #6e8efb;
+    color: white;
+}
+
+.hint {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+/* استایل‌های پاپ‌آپ */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.popup-overlay.show {
+    display: flex;
+}
+
+.popup {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.popup.success {
+    border: 3px solid #4CAF50;
+}
+
+.popup.error {
+    border: 3px solid #F44336;
+}
+
+.popup.warning {
+    border: 3px solid #FFC107;
+}
+
+.popup-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.popup h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.popup p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.popup button {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.popup button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* استایل‌های جدید برای سطوح سختی */
+.difficulty-selection,
+.mode-selection {
+    margin: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.difficulty-selection h2,
+.mode-selection h2 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.difficulty-buttons,
+.mode-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.difficulty-buttons .glass-button,
+.mode-buttons .glass-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 30px;
+    min-width: 220px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.difficulty-buttons .glass-button span,
+.mode-buttons .glass-button span {
+    font-size: 1.4em;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.difficulty-buttons .glass-button small,
+.mode-buttons .glass-button small {
+    font-size: 0.95em;
+    opacity: 0.9;
+    font-weight: normal;
+}
+
+.difficulty-buttons .glass-button:hover,
+.mode-buttons .glass-button:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* استایل‌های جدید برای دکمه‌ها */
+.hint-button,
+.check-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 140px;
+    justify-content: center;
+    font-weight: bold;
+    padding: 14px 28px;
+}
+
+.hint-button {
+    background: rgba(255, 193, 7, 0.2);
+    border-color: rgba(255, 193, 7, 0.3);
+}
+
+.hint-button:hover {
+    background: rgba(255, 193, 7, 0.25);
+}
+
+.check-button {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+.check-button:hover {
+    background: rgba(76, 175, 80, 0.25);
+}
+
+/* انیمیشن برای راهنمایی */
+@keyframes hint-glow {
+    0% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 193, 7, 0.5); }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 193, 7, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 193, 7, 0.5); }
+}
+
+.hint-animation {
+    animation: hint-glow 1s ease-in-out;
+    background: rgba(255, 193, 7, 0.2) !important;
+}
+
+/* بهبود استایل پاپ‌آپ */
+.popup {
+    white-space: pre-line;
+}
+
+.popup-message {
+    font-family: monospace;
+    text-align: left;
+    direction: ltr;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+/* پاسخگویی بهتر */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .glass-card {
+        padding: 20px;
+    }
+
+    .number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2em;
+    }
+
+    .menu-card h1 {
+        font-size: 2em;
+    }
+
+    .glass-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .game-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .game-header .back-button {
+        align-self: flex-start;
+    }
+
+    .game-info {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        margin: 0;
+        gap: 8px;
+    }
+
+    .info-item {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+
+    .menu-header {
+        padding: 0 35px;
+    }
+
+    .menu-header h2 {
+        font-size: 1.4em;
+    }
+
+    .menu-header .back-button {
+        padding: 5px 8px;
+        font-size: 0.8em;
+    }
+
+    .difficulty-buttons .glass-button,
+    .mode-buttons .glass-button {
+        min-width: 160px;
+        padding: 15px 20px;
+    }
+
+    .hint-button,
+    .check-button {
+        min-width: 120px;
+        padding: 12px 20px;
+    }
+} 
